@@ -59,20 +59,12 @@ USER ${NB_USER}
 ENV PATH=$CONDA_DIR/bin:$PATH
 ENV PATH=/home/$NB_USER/.local/bin:$PATH
 
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -f -b -p /opt/conda && rm -rf ~/miniconda.sh
 
-RUN conda install -c conda-forge mamba python==3.8
-RUN mamba install -y -q -c "nvidia/label/cuda-11.8.0" cuda-nvcc
-
-RUN python3.8 -m pip install \
-    bioblend==1.0.0 \
-    galaxy-ie-helpers==0.2.7 \
+RUN pip install \
     jupyter_server==1.16.0 \
     jupyterlab==3.4.6 \
     jupytext==1.14.1 \
     biopython==1.79
-
 
 USER root 
 
