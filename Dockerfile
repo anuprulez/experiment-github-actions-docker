@@ -66,6 +66,9 @@ RUN pip install \
     jupytext==1.14.1 \
     biopython==1.79
 
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -f -b -p /opt/conda && rm -rf ~/miniconda.sh
+
 USER root 
 
 RUN mkdir -p /home/$NB_USER/.ipython/profile_default/startup/
